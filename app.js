@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 4000;
+const port = 8000;
 const { largerCatechism } = require("./data/largerCatechism");
 const { scriptureIndex } = require("./data/output/bible-dictionary");
 
