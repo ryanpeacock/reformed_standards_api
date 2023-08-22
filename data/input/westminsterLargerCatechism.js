@@ -1,4 +1,4 @@
-const originalFormat = [
+const westminsterLargerCatechism = [
   {
     id: 1,
     question: "What is the chief and highest end of man?",
@@ -2671,4 +2671,4 @@ const originalFormat = [
   },
 ];
 
-module.exports = { originalFormat };
+module.exports = { westminsterLargerCatechism };

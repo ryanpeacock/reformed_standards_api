@@ -1,5 +1,7 @@
 const axios = require("axios");
-const { largerCatechism } = require("../data/largerCatechism");
+const {
+  largerCatechism,
+} = require("../data/westminster/catechisms/larger/largerCatechismWithScripture");
 const { createOutputOfFormattedArray } = require("../utilities/formatting");
 
 function formatTime(seconds) {

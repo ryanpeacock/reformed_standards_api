@@ -1,6 +1,6 @@
 const {
   largerCatechismWithScripture,
-} = require("../data/largerCatechismWithScripture");
+} = require("../data/westminster/catechisms/larger/largerCatechismWithScripture");
 const { createOutputOfFormattedArray } = require("../utilities/formatting");
 
 const bibleBooks = {

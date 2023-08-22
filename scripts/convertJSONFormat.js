@@ -1,4 +1,4 @@
-const { originalFormat } = require("../data/originalFormat");
+const { westminsterLargerCatechism } = require("../data/input");
 const {
   convertAnswerStringToArray,
   convertStringsToArraysInProofTexts,
@@ -10,7 +10,7 @@ const {
 } = require("../utilities/formatting");
 
 // 1. Convert answer string into an array of strings
-let conversionRoundOne = convertAnswerStringToArray(originalFormat);
+let conversionRoundOne = convertAnswerStringToArray(westminsterLargerCatechism);
 
 // 2. Convert strings in proofTexts array to be arrays from seperating ; character
 let conversionRoundTwo = convertStringsToArraysInProofTexts(conversionRoundOne);

@@ -1,2 +1,48 @@
-node_modules
-/node_modules
+# Dependency directories
+node_modules/
+npm-debug.log
+
+# Environment variables
+.env
+
+# Logs and runtime data
+logs/
+*.log
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# IDE and code editor files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# OS generated files
+.DS_Store
+Thumbs.db
+Icon?
+
+# Output files
+dist/
+build/
+*.db
+
+# Operating System Files
+.DS_Store
+ehthumbs.db
+Thumbs.db
+
+# Editor-specific files
+*.sublime-project
+*.sublime-workspace
+*.idea/
+*.code-workspace
+
+# Compiled binary addons (Node-gyp)
+build/Release
+node_modules/.bin
