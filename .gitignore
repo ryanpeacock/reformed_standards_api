@@ -46,3 +46,5 @@ Thumbs.db
 # Compiled binary addons (Node-gyp)
 build/Release
 node_modules/.bin
+
+data/formatting/output/
