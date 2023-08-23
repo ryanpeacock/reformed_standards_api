@@ -1,6 +1,6 @@
 const {
   largerCatechismWithScripture,
-} = require("../data/westminster/catechisms/larger/largerCatechismWithScripture");
+} = require("../data/standards/westminster");
 const { createOutputOfFormattedArray } = require("../utilities/formatting");
 
 const bibleBooks = {
@@ -94,7 +94,7 @@ largerCatechismWithScripture.map((item) => {
     });
   }
 });
-Object.keys(bibleBooks).map((key, index) => {
+Object.keys(bibleBooks).map((key) => {
   bibleBooks[key].sort((a, b) => a.chapter - b.chapter);
 });
 const newFilePath = "data/output/bible-dictionary.js";

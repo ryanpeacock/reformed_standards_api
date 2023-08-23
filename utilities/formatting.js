@@ -82,6 +82,66 @@ const bibleAbbreviationsToFullName = {
   "Zeph.": "Zephaniah",
 };
 
+const bibleAbbreviationsToFullNameShorter = {
+  "1 Chron.": "1 Chronicles",
+  "1 Cor": "1 Corinthians",
+  "1 Cor.": "1 Corinthians",
+  "1 John": "1 John",
+  "1 Kings": "1 Kings",
+  "1 Pet.": "1 Peter",
+  "1 Sam.": "1 Samuel",
+  "1 Thess.": "1 Thessalonians",
+  "1 Tim.": "1 Timothy",
+  "2 Chron.": "2 Chronicles",
+  "2 Cor.": "2 Corinthians",
+  "2 Pet.": "2 Peter",
+  "2 Thess.": "2 Thessalonians",
+  "2 Tim.": "2 Timothy",
+  "3 John": "3 John",
+  Acts: "Acts",
+  "Acts.": "Acts",
+  Amos: "Amos",
+  "Col.": "Colossians",
+  "Dan.": "Daniel",
+  "Deut.": "Deuteronomy",
+  "Ecc.": "Ecclesiastes",
+  "Eph.": "Ephesians",
+  "Ex.": "Exodus",
+  "Ezek.": "Ezekiel",
+  "Ezk.": "Ezekiel",
+  "Gal.": "Galatians",
+  "Gen.": "Genesis",
+  "Heb.": "Hebrews",
+  "I Chron.": "1 Chronicles",
+  "I Cor.": "1 Corinthians",
+  "I Pet.": "1 Peter",
+  "ICor.": "1 Corinthians",
+  "II Tim.": "2 Timothy",
+  "Isa.": "Isaiah",
+  "Jas.": "James",
+  "Jer.": "Jeremiah",
+  Job: "Job",
+  Joel: "Joel",
+  John: "John",
+  "Josh.": "Joshua",
+  Jude: "Jude",
+  "Lev.": "Leviticus",
+  Luke: "Luke",
+  "Mal.": "Malachi",
+  Mark: "Mark",
+  "Mat.": "Matthew",
+  "Matt.": "Matthew",
+  "Mic.": "Micah",
+  "Neh.": "Nehemiah",
+  "Phil.": "Philippians",
+  "Prov.": "Proverbs",
+  "Ps.": "Psalms",
+  "Rev.": "Revelation",
+  "Rom.": "Romans",
+  Titus: "Titus",
+  "Zech.": "Zechariah",
+};
+
 const findUniqueNamesForBibleBooks = (catechismArray) => {
   let uniqueBooks = new Set();
 
@@ -144,7 +204,8 @@ const convertAnswerStringToArray = (catechismArray) => {
   let newFormatData = [];
   catechismArray.map((item) => {
     const { answer } = item;
-    const regex = /\[\d+\]/g;
+    const regex = /\[([a-z])\]/g;
+    // const regex = /\[\d+\]/g;
     let segments = answer.split(regex);
     let newArray = segments.filter((segment) => segment.trim() !== "");
 
@@ -197,7 +258,7 @@ const convertProofTextVersesWithNoBook = (inputArray) => {
 
 const convertProofTextStringToObject = (inputArray) => {
   let newArray = [];
-  [...inputArray].map((item) => {
+  [...inputArray].map((item, index) => {
     newArray.push({
       ...item,
       proofTexts: item.proofTexts.map((i) => {
@@ -225,7 +286,7 @@ const convertBibleBookToFullName = (inputArray) => {
         return i.map((j) => {
           return {
             ...j,
-            book: bibleAbbreviationsToFullName[j.book],
+            book: bibleAbbreviationsToFullNameShorter[j.book],
           };
         });
       }),
@@ -236,6 +297,7 @@ const convertBibleBookToFullName = (inputArray) => {
 
 module.exports = {
   bibleAbbreviationsToFullName,
+  bibleAbbreviationsToFullNameShorter,
   findUniqueNamesForBibleBooks,
   findAnswerAndProofTextLengthMismatch,
   removeLeadingSpace,
