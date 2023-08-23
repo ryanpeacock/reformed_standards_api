@@ -47,4 +47,4 @@ Thumbs.db
 build/Release
 node_modules/.bin
 
-data/formatting/output/
+data/formatting/
