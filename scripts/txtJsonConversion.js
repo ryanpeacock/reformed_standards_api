@@ -6,9 +6,9 @@ const {
 const fs = require("fs");
 
 // Read the input file
-const inputFile = "data/raw_text/westminsterConfession.txt";
+const inputFile = "data/raw_text/heidelbergCatechism.txt";
 const numRegEx = /^\d+$/;
-const letterRegEx = /[a-z]/;
+const letterRegEx = /[A-Z]/;
 
 fs.readFile(inputFile, "utf8", (err, data) => {
   if (err) {
@@ -33,50 +33,21 @@ fs.readFile(inputFile, "utf8", (err, data) => {
     // Initialize an object for the current section
     const sectionObj = {
       id: sectionIndex + 1,
-      title: chapterTitle
-        .split(/^CHAPTER \d+\.\s(.+)$/)
+      question: chapterTitle
+        .split(/^Question \d+\.\s(.+)$/)
         .filter((item) => item !== "")[0],
-      paragraphs: [],
+      answer: "",
+      proofTexts: "",
     };
 
-    let paragraphNum = 0;
-    let currentParagraph;
     // Process each line in the section
     for (let i = 1; i < sectionData.length; i++) {
       const line = sectionData[i];
-      if (line.startsWith("-----------------  PASSAGE  -----------------")) {
-        if (paragraphNum > 0) {
-          sectionObj.paragraphs.push(currentParagraph);
-        }
-        paragraphNum += 1;
-        currentParagraph = {
-          id: paragraphNum,
-          passage: "",
-          proofTexts: [],
-        };
-      } else if (numRegEx.test(line[0])) {
-        if (line[1] === "0") {
-          currentParagraph.passage = line
-            .slice(4)
-            .split(/\*([a-z])\*/g)
-            .filter(
-              (match) => match.trim() !== "" && match.trim().length !== 1
-            );
-        } else {
-          currentParagraph.passage = line
-            .slice(3)
-            .split(/\*([a-z])\*/g)
-            .filter(
-              (match) => match.trim() !== "" && match.trim().length !== 1
-            );
-        }
+      if (line.startsWith("----------------  ANSWER  ----------------")) {
       } else if (letterRegEx.test(line[0])) {
-        if (line !== "") {
-          currentParagraph.proofTexts.push(line.slice(3));
-        }
-      }
-      if (i === sectionData.length - 1) {
-        sectionObj.paragraphs.push(currentParagraph);
+        sectionObj.answer = line;
+      } else if (line.startsWith("(")) {
+        sectionObj.proofTexts = line;
       }
     }
 
@@ -85,6 +56,6 @@ fs.readFile(inputFile, "utf8", (err, data) => {
   });
 
   // Output the result as JSON
-  const outputFile = "data/formatting/output/theconfession.js";
+  const outputFile = "data/formatting/output/heidelberg.js";
   createOutputOfFormattedArray(result, outputFile);
 });

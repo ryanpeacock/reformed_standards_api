@@ -18,6 +18,14 @@ app.use(
   "/westminster/confession/",
   require("./routes/westminster/confessionOfFaith")
 );
+app.use(
+  "/three_forms/heidelberg_catechism/",
+  require("./routes/threeForms/heidelbergCaechism")
+);
+app.use(
+  "/children/childrens_catechism",
+  require("./routes/childrens/childrensCatechism")
+);
 app.use("/scripture_index/", require("./routes/scriptureIndex/scriptureIndex"));
 
 // Run Server
