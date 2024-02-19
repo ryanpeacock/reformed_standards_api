@@ -2176,7 +2176,7 @@ const confessionOfFaith = [
         passage: [
           "From this original corruption, whereby we are utterly indisposed, disabled, and made opposite to all good,",
           "and wholly inclined to all evil,",
-          "do proceed all actual transgressions.c",
+          "do proceed all actual transgressions.",
         ],
         proofTexts: [
           [
